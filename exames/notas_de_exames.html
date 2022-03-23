@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>Réplica do eSura</title>
+</head>
+<body>
+   <header>
+    
+    <div class="logo"><p>eSura</p></div>
+    
+    <div class="menu">
+      
+      <ul class="menu--lista">
+        <li id="active"><a>Home</a></li>
+        <li><a>Acerca do Sistema</a></li>
+        <li><a>Contacte-nos</a></li>
+      </ul>
+      
+    </div>
+    
+    <div class="user">
+      <p id="user--user">Leonildo Muchecua João Júlio</p>
+      <p id="user--icon">%</p>
+    </div>
+    
+  </header>
+  
+  <main>
+    
+    <aside class="sidebar">
+      
+      <h1 id="menu--side">Menu do sistema</h1>
+      
+      <div class="menu--side">
+        
+        <div class="bullet">
+           <input type="checkbox" id="check">
+    <label for="check" class="bullet">
+        <p id="bullet">⭐</p>
+        <p id="menu--side__2"><a href="../index.html">Portal do estudante</a></p>
+    </label>
+        </div>
+        
+        <ul class="mside">
+          <li><a href="../NF/notas_de_frequencia.html">Notas de Frequência</a></li>
+          <li><a href="notas_de_exames.html">Exames</a></li>
+          
+        </ul>
+      </div>
+      
+    </aside>
+    
+    <section class="container">
+      
+      <div class="nftxt">
+        <p>Notas de Frequência</p>
+        <label><p> > Ano Lectivo: 2020_S2</p></label>
+      </div>
+      
+      <div class="escano">
+        <p>Ano Lectivo</p>
+        <input placeholder="2020_S2">
+      </div>
+      
+      <div class="main--table">
+        <table>
+        <tr>
+          <th>Disciplina</th>
+          <th>Semestre</th>
+          <th>Média Freq</th>
+          <th>Obs.</th>
+          <th>Exame Normal</th>
+          <th>Exame Rec.</th>
+          <th>Média Final</th>
+          <th>Resultado Final</th>
+        
+        </tr>
+        <tr>
+          <th>Inglês II</th>
+          <td id="semestre">2</td>
+          <td><input type="number" id="d1--mfreq" onKeyup="Calcular()"></td>
+          <td><label id="d1--rfreq" ></label></td>
+          <td><input type="number" id="d1--exa1" onKeyup="Calcular()"></td>
+          <td><input type="number" id="d1--exa2" onKeyup="Calcular()"></td>
+          <td><label id="d1--mfinal" ></label></td>
+          <td><label id="d1--rfinal"></label></td>
+        </tr>
+        
+        <tr>
+          <th>Análise Matemática</th>
+          <td id="semestre">2</td>
+          <td><input id="d2--mfreq" onKeyup="Calcular2()" type="number"></td>
+          <td><label id="d2--rfreq" ></label></td>
+          <td><input id="d2--exa1" onKeyup="Calcular2()" type="number"></td>
+          <td><input id="d2--exa2" onKeyup="Calcular2()" type="number"></td>
+          <td><label id="d2--mfinal"></label></td>
+          <td><label id="d2--rfinal"></label></td>
+        </tr>
+        </table>
+        
+      </div>
+      
+    </section>
+  </main>
+  
+  
+  <script type="text/JavaScript">
+    function Calcular2(){
+      try {
+      
+      //Calculando a media de testes
+      var mfreq = Math.round(document.getElementById("d2--mfreq").value);
+      if (mfreq == "") mfreq = 0;
+      if (isNaN(mfreq)) throw "Digite um número valido";
+      if (mfreq>20) throw "O número inserido é inválido";
+      var rfreq = document.getElementById("d2--rfreq");
+      if (rfreq == "") rfreq = 0;
+      var ex1 = Math.round(document.getElementById("d2--exa1").value);
+      if (ex1 == "") ex1=0;
+      if (isNaN(ex1)) throw "Digite um número valido";
+      if (ex1>20) throw "O número inserido é inválido";
+      var ex2 = Math.round(document.getElementById("d2--exa2").value);
+      if (ex2 == "") ex2=0;
+      if (isNaN(ex2)) throw "Digite um número valido";
+      if (ex2>20) throw "O número inserido é inválido";
+      var mf = document.getElementById("d2--mfinal");
+      var rf = document.getElementById("d2--rfinal");
+        
+     //PASSANDO O RESULTADO DE FREQUENCIA
+     if(mfreq<10){
+       rfreq.innerHTML = "Excluido";
+     }else if(mfreq<14 && mfreq>=10){
+       rfreq.innerHTML = "Admitido";
+     }else{
+       rfreq.innerHTML = "Dispensado";
+       rf.innerHTML = "Aprovado";
+       
+     }
+     
+     //CALCULANDO MÉDIA GLOBAL
+     var mexa;
+     var mfinal;
+     
+     if(ex1 !== "" && ex2 !== ""){
+       mexa = parseInt (ex1)+ parseInt (ex2);
+     }else{
+       mexa = ex1;
+     }
+        
+        
+        mfinal = (1 * parseInt(mfreq)) + mexa;
+        
+        if(mfreq>=14){
+         mexa = 0;
+        }else{
+        mf.innerHTML = Math.round(mfinal/2);
+        }
+        
+
+        if(mf.innerHTML>10){
+          rf.innerHTML = "Aprovado"
+        }else if(mfreq<10){
+          rf.innerHTML = "Reprovado"
+        }else if(mfreq>=14){
+          rf.innerHTML = "Aprovado"
+        }else if(ex1<10){
+        rf.innerHTML = "Reprovado";
+        }else if(ex2<10){
+        rf.innerHTML = "Reprovado";
+        }
+      
+      } catch(err) {
+     // var g = document.getElementById("resul");
+      //g.innerHTML = "Erro:  " + err + ".";
+      alert ("Erro:  " + err + ".");
+      }
+    }
+  
+  //NOTA DE DISCIPLINA 2
+  
+  function Calcular(){
+      try {
+      
+      //Calculando a media de testes
+      var mfreq = Math.round(document.getElementById("d1--mfreq").value);
+      if (mfreq == "") mfreq = 0;
+      if (isNaN(mfreq)) throw "Digite um número valido";
+      if (mfreq>20) throw "O número inserido é inválido";
+      var rfreq = document.getElementById("d1--rfreq");
+      if (rfreq == "") rfreq = 0;
+      var ex1 = Math.round(document.getElementById("d1--exa1").value);
+      if (ex1 == "") ex1=0;
+      if (isNaN(ex1)) throw "Digite um número valido";
+      if (ex1>20) throw "O número inserido é inválido";
+      var ex2 = Math.round(document.getElementById("d1--exa2").value);
+      if (ex2 == "") ex2=0;
+      if (isNaN(ex2)) throw "Digite um número valido";
+      if (ex2>20) throw "O número inserido é inválido";
+      var mf = document.getElementById("d1--mfinal");
+      var rf = document.getElementById("d1--rfinal");
+      
+      //PASSANDO O RESULTADO DE FREQUENCIA
+      if(mfreq<10){
+      rfreq.innerHTML = "Excluido";
+      }else if(mfreq<14 && mfreq>=10){
+      rfreq.innerHTML = "Admitido";
+      }else{
+      rfreq.innerHTML = "Dispensado";
+      rf.innerHTML = "Aprovado";
+      
+      }
+      
+      //CALCULANDO MÉDIA GLOBAL
+      var mexa;
+      var mfinal;
+      
+      if(ex1 !== "" && ex2 !== ""){
+      mexa = parseInt (ex1)+ parseInt (ex2);
+      }else{
+      mexa = ex1;
+      }
+      
+      
+      mfinal = (1 * parseInt(mfreq)) + mexa;
+      
+      if(mfreq>=14){
+      mexa = 0;
+      }else{
+      mf.innerHTML = Math.round(mfinal/2);
+      }
+      
+      
+      if(mf.innerHTML>10){
+      rf.innerHTML = "Aprovado"
+      }else if(mfreq<10){
+      rf.innerHTML = "Reprovado"
+      }else if(mfreq>=14){
+      rf.innerHTML = "Aprovado"
+      }else if(ex1<10){
+      rf.innerHTML = "Reprovado";
+      }else if(ex2<10){
+      rf.innerHTML = "Reprovado";
+      }
+      
+      } catch(err) {
+      // var g = document.getElementById("resul");
+      //g.innerHTML = "Erro:  " + err + ".";
+      alert ("Erro:  " + err + ".");
+      }
+      
+      
+  }
+
+  
+  </script>
+</body>
+</html>

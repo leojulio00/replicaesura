@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>Réplica do eSura</title>
+</head>
+<body>
+   <header>
+    
+    <div class="logo"><p>eSura</p></div>
+    
+    <div class="menu">
+      
+      <ul class="menu--lista">
+        <li id="active"><a>Home</a></li>
+        <li><a>Acerca do Sistema</a></li>
+        <li><a>Contacte-nos</a></li>
+      </ul>
+      
+    </div>
+    
+    <div class="user">
+      <p id="user--user">Leonildo Muchecua João Júlio</p>
+      <p id="user--icon">%</p>
+    </div>
+    
+  </header>
+  
+  <main>
+    
+    <aside class="sidebar">
+      
+      <h1 id="menu--side">Menu do sistema</h1>
+      
+      <div class="menu--side">
+        
+        <div class="bullet">
+           <input type="checkbox" id="check">
+    <label for="check" class="bullet">
+        <p id="bullet">⭐</p>
+        <p id="menu--side__2"><a href="../index.html">Portal do estudante</a></p>
+    </label>
+        </div>
+        
+        <ul class="mside">
+          <li><a href="notas_de_frequencia.html">Notas de Frequência</a></li>
+          <li><a href="../exames/notas_de_exames.html">Exames</a></li>
+          
+        </ul>
+      </div>
+      
+    </aside>
+    
+    <section class="container">
+      
+      <div class="nftxt">
+        <p>Notas de Frequência</p>
+        <label><p> > Ano Lectivo: 2020_S2</p></label>
+      </div>
+      
+      <div class="escano">
+        <p>Ano Lectivo</p>
+        <input placeholder="2020_S2">
+      </div>
+      
+      <div class="main--table">
+        <table>
+        <tr>
+          <th>Disciplina</th>
+          <th>Semestre</th>
+          <th>Teste 1</th>
+          <th>Teste 2</th>
+          <th>Teste 3</th>
+          <th>Trab 1</th>
+          <th>Trab 2</th>
+          <th>Trab 3</th>
+          <th>Média</th>
+          <th>Classificação</th>
+        
+        </tr>
+        <tr>
+          <th>Inglês II</th>
+          <td id="semestre">2</td>
+          <td><input type="number" id="d1--teste1" onKeyup="Calcular()"></td>
+          <td><input type="number" id="d1--teste2" onKeyup="Calcular()"></td>
+          <td><input type="number" id="d1--teste3" onKeyup="Calcular()"></td>
+          <td><input type="number" id="d1--trab1" onKeyup="Calcular()"></td>
+          <td><input type="number" id="d1--trab2" onKeyup="Calcular()"></td>
+          <td><input type="number" id="d1--trab3" onKeyup="Calcular()"></td>
+          <td><label id="d1--media" ></label></td>
+          <td><label id="d1--classifi"></label></td>
+        </tr>
+        
+        <tr>
+          <th>Análise Matemática</th>
+          <td id="semestre">2</td>
+          <td><input id="d2--teste1" onKeyup="Calcular2()" type="number"></td>
+          <td><input id="d2--teste2" onKeyup="Calcular2()" type="number"></td>
+          <td><input id="d2--teste3" onKeyup="Calcular2()" type="number"></td>
+          <td><input id="d2--trab1" onKeyup="Calcular2()" type="number"></td>
+          <td><input id="d2--trab2" onKeyup="Calcular2()" type="number"></td>
+          <td><input id="d2--trab3" onKeyup="Calcular2()" type="number"></td>
+          <td><label id="d2--media"></label></td>
+          <td><label id="d2--classifi"></label></td>
+        </tr>
+        </table>
+        
+      </div>
+      
+    </section>
+  </main>
+  
+  
+  <script type="text/JavaScript">
+    function Calcular2(){
+      try {
+      
+      //Calculando a media de testes
+      var t1 = Math.round(document.getElementById("d2--teste1").value);
+      if (t1 == "")  t1 = 0;
+      if (isNaN(t1)) throw "Digite um número valido";
+      if (t1>20) throw "O número inserido é inválido";
+      var t2 = Math.round(document.getElementById("d2--teste2").value);
+      if (t2 == "") t2=0;
+      if (isNaN(t2)) throw "Digite um número valido";
+      if (t2>20) throw "O número inserido é inválido";
+      var t3 = Math.round(document.getElementById("d2--teste3").value);
+      if (t3 == "") t3=0;
+      if (isNaN(t3)) throw "Digite um número valido";
+      if (t3>20) throw "O número inserido é inválido";
+      
+      var mtestes;
+      
+      var t = parseInt (t1)+parseInt (t2)+parseInt (t3);
+     
+      if(t1 !== "" && t2 == "" && t3 == ""){
+        mtestes = Math.round(t1/2);
+        //document.getElementById("d1--media").innerHTML = mtestes;
+      }else if(t1 !== "" && t2 !== "" && t3 == ""){
+        mtestes = Math.round(t/2);
+        //document.getElementById ("d2--media").innerHTML = mtestes;
+      } else{
+      mtestes = Math.round(t/3);
+      //document.getElementById ("d2--media").innerHTML = mtestes;
+      }
+      
+      //Calculando a media de trabalhos
+      var tb1 = Math.round(document.getElementById("d2--trab1").value);
+      if (tb1 == "")  tb1 = 0;
+      if (isNaN(tb1)) throw "Digite um número valido";
+      if (tb1>20) throw "O número inserido é inválido";
+      var tb2 = Math.round(document.getElementById("d2--trab2").value);
+      if (tb2 == "") tb2=0;
+      if (isNaN(tb2)) throw "Digite um número valido";
+      if (tb2>20) throw "O número inserido é inválido";
+      var tb3 = Math.round(document.getElementById("d2--trab3").value);
+      if (tb3 == "") tb3=0;
+      if (isNaN(tb3)) throw "Digite um número valido";
+      if (tb3>20) throw "O número inserido é inválido";
+      
+      var mtrab;
+      
+      var tb = parseInt (tb1)+parseInt (tb2)+parseInt (tb3);
+      
+      if(tb1 !== "" && tb2 == "" && tb3 == ""){
+      mtrab = Math.round(tb1/2);
+      //document.getElementById("d2--media").innerHTML = mtrab;
+      }else if(tb1 !== "" && tb2 !== "" && tb3 == ""){
+      mtrab = Math.round(tb/2);
+      //document.getElementById ("d2--media").innerHTML = mtrab;
+      } else{
+      mtrab = Math.round(tb/3);
+      //document.getElementById ("d2--media").innerHTML = mtrab;
+      }
+      
+      //Acando a media final
+      var mf = (parseInt(mtestes) + parseInt(mtrab))*2;
+      var mff = Math.round(mf/3);
+      if(mff>20) mff = 20;
+      document.getElementById("d2--media").innerHTML = mff;
+      
+      //MOSTRANDO O RESULTADO
+      if(mff<=20 && mff >= 14){
+        document.getElementById("d2--classifi").innerHTML = " Dispensado ";
+      } else if(mff>10 && mff<14){
+      /*if(t1<10) document.getElementById("d2--classifi").innerHTML = " Excluido ";
+      if(t2<10) document.getElementById("d2--classifi").innerHTML = " Excluido ";
+      if(t3<10) document.getElementById("d2--classifi").innerHTML = " Excluido ";
+      if(trab1<10) document.getElementById("d2--classifi").innerHTML = " Excluido ";
+      if(trab2<10) document.getElementById("d2--classifi").innerHTML = " Excluido ";
+      if(trab3<10) document.getElementById("d1--classifi").innerHTML = " Excluido ";*/
+        document.getElementById("d2--classifi").innerHTML = " Admitido ";
+      }else{
+        document.getElementById("d2--classifi").innerHTML = " Excluido ";
+      }
+      
+      
+      
+      } catch(err) {
+      var g = document.getElementById("resul");
+      //g.innerHTML = "Erro:  " + err + ".";
+      alert ("Erro:  " + err + ".");
+      }
+    }
+  
+  //NOTA DE DISCIPLINA 2
+  
+  function Calcular(){
+      try {
+      
+      //Calculando a media de testes
+      var t1 = Math.round(document.getElementById("d1--teste1").value);
+      if (t1 == "")  t1 = 0;
+      if (isNaN(t1)) throw "Digite um número valido";
+      if (t1>20) throw "O número inserido é inválido";
+      var t2 = Math.round(document.getElementById("d1--teste2").value);
+      if (t2 == "") t2=0;
+      if (isNaN(t2)) throw "Digite um número valido";
+      if (t2>20) throw "O número inserido é inválido";
+      var t3 = Math.round(document.getElementById("d1--teste3").value);
+      if (t3 == "") t3=0;
+      if (isNaN(t3)) throw "Digite um número valido";
+      if (t3>20) throw "O número inserido é inválido";
+      
+      var mtestes;
+      
+      var t = parseInt (t1)+parseInt (t2)+parseInt (t3);
+     
+      if(t1 !== "" && t2 == "" && t3 == ""){
+        mtestes = Math.round(t1/2);
+        //document.getElementById("d1--media").innerHTML = mtestes;
+      }else if(t1 !== "" && t2 !== "" && t3 == ""){
+        mtestes = Math.round(t/2);
+        //document.getElementById ("d1--media").innerHTML = mtestes;
+      } else{
+      mtestes = Math.round(t/3);
+      //document.getElementById ("d1--media").innerHTML = mtestes;
+      }
+      
+      //Calculando a media de trabalhos
+      var tb1 = Math.round(document.getElementById("d1--trab1").value);
+      if (tb1 == "")  tb1 = 0;
+      if (isNaN(tb1)) throw "Digite um número valido";
+      if (tb1>20) throw "O número inserido é inválido";
+      var tb2 = Math.round(document.getElementById("d1--trab2").value);
+      if (tb2 == "") tb2=0;
+      if (isNaN(tb2)) throw "Digite um número valido";
+      if (tb2>20) throw "O número inserido é inválido";
+      var tb3 = Math.round(document.getElementById("d1--trab3").value);
+      if (tb3 == "") tb3=0;
+      if (isNaN(tb3)) throw "Digite um número valido";
+      if (tb3>20) throw "O número inserido é inválido";
+      
+      var mtrab;
+      
+      var tb = parseInt (tb1)+parseInt (tb2)+parseInt (tb3);
+      
+      if(tb1 !== "" && tb2 == "" && tb3 == ""){
+      mtrab = Math.round(tb1/2);
+      //document.getElementById("d1--media").innerHTML = mtrab;
+      }else if(tb1 !== "" && tb2 !== "" && tb3 == ""){
+      mtrab = Math.round(tb/2);
+      //document.getElementById ("d1--media").innerHTML = mtrab;
+      } else{
+      mtrab = Math.round(tb/3);
+      //document.getElementById ("d1--media").innerHTML = mtrab;
+      }
+      
+      //Acando a media final
+      var mf = (parseInt(mtestes) + parseInt(mtrab))*2;
+      var mff = Math.round(mf/3);
+      if(mff>20) mff = 20;
+      document.getElementById("d1--media").innerHTML = mff;
+      
+      //MOSTRANDO O RESULTADO
+      if(mff<=20 && mff >= 14){
+        document.getElementById("d1--classifi").innerHTML = " Dispensado ";
+      } else if(mff>10 && mff<14){
+      /*if(t1<10) document.getElementById("d1--classifi").innerHTML = " Excluido ";
+      if(t2<10) document.getElementById("d1--classifi").innerHTML = " Excluido ";
+      if(t3<10) document.getElementById("d1--classifi").innerHTML = " Excluido ";
+      if(trab1<10) document.getElementById("d1--classifi").innerHTML = " Excluido ";
+      if(trab2<10) document.getElementById("d1--classifi").innerHTML = " Excluido ";
+      if(trab3<10) document.getElementById("d1--classifi").innerHTML = " Excluido ";*/
+        document.getElementById("d1--classifi").innerHTML = " Admitido ";
+      }else{
+        document.getElementById("d1--classifi").innerHTML = " Excluido ";
+      }
+      
+      
+      
+      } catch(err) {
+      var g = document.getElementById("resul");
+      //g.innerHTML = "Erro:  " + err + ".";
+      alert ("Erro:  " + err + ".");
+      }
+  }
+
+  
+  </script>
+</body>
+</html>

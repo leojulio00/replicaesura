@@ -1,0 +1,258 @@
+/* CABECALHO DO SITE*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: roboto, sans-serif;
+}
+
+header{
+  display: grid;
+  grid-template-columns: 3% 50px 1fr .6fr .1%;
+  grid-template-areas: 
+  "logo menu user";
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  background: #FF4527;
+  color: white;
+}
+
+.logo{
+  grid-column: 2/3;
+  
+  margin-right: 30px;
+}
+
+.logo p{
+  font-size: 30px;
+  color: white;
+}
+
+.menu--lista{
+  grid-area: menu;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: row;
+  list-style:  none;
+}
+
+.menu--lista ul{
+  margin: 0 40px;
+}
+
+.menu--lista li{
+  padding: 30px 15px;
+  border-left: .6px solid rgba(0,0,0, .56);
+  border-right: .6px solid rgba(0,0,0, .56);
+}
+
+.menu--lista #active, li:hover{
+  background: rgba(0,0,0, .3);
+  transition: .7s linear;
+}
+
+.menu--lista li a{
+ font-size: 17px;
+}
+
+.user{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+#user--user{
+  margin: 0px 5px;
+  text-align: right;
+}
+
+#user--icon{
+  margin: 0px 5px;
+  text-align: right;
+}
+
+/* CORPO DO SITE*/
+
+main{
+  display: grid;
+  grid-auto-columns: 5% .7fr 2fr 5%;
+  grid-template-areas: aside main;
+  grid-gap: 10px;
+  padding: 30px 20px 30px 0px;
+  background: #f0f0f0;
+  height: 100vh;
+}
+
+.sidebar{
+  grid-column: 2/3;
+  background: #f8f8f8;
+  width: 260px;
+  height: 450px;
+  margin: 0px 20px 0px -10px;
+  box-shadow: 0px 0px 6px rgba(0,0,0, .3);
+  border-radius: 4px;
+  padding: 33px;
+}
+
+#menu--side{
+  font-weight: none;
+}
+
+.bullet{
+  display: flex;
+  color: black;
+  margin: 10px 0px;
+}
+
+.bullet p a{
+  text-decoration: none;
+  color: #FF4527;
+}
+
+#bullet{
+  margin-right: 5px;
+}
+
+#menu--side__2{
+  font-size: 19px;
+  color: #FF4527;
+}
+
+
+.mside{
+  margin: -18px 0px;
+  margin-left: 50px;
+  opacity: 1;
+  transition: all .9s;
+}
+
+
+.mside li a{
+  color: #FF4527;
+  text-decoration: none;
+  
+}
+
+
+
+.container{
+  position: relative;
+  grid-column: 3/4;
+  background: #f8f8f8;
+  width: 600px;
+  height: 400px;
+  margin: 0px 10px 0px 10px;
+  box-shadow: 0px 0px 6px rgba(0,0,0, .3);
+  border-radius: 4px;
+  padding: 33px;
+  
+}
+
+.main--txt{
+  position: relative;
+  padding: 30px;
+  margin: 0 auto;
+  align-items: center;
+  background: rgba(255,0,0, .15);
+  border-radius: 6px;
+  color: #FF4527;
+}
+
+.nftxt{
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  background: none;
+  border-bottom: 1.3px solid rgba(0,0,0, .16);
+  padding-bottom: 9px;
+  margin-bottom: 20px;
+}
+
+.nftxt p{
+  color: #FF4527;
+  margin-right: 7px;
+}
+
+.nftxt label p{
+  color: black;
+}
+
+.escano{
+  display: flex;
+  flex-direction: row;
+  background: none;
+  border: 1.3px solid rgba(0,0,0, .16);
+  border-radius: 3px;
+  align-items: center;
+  padding: 20px 20px 20px 100px;
+}
+
+.escano input{
+  background: white;
+  box-shadow: 0px 0px 6px rgba(0,0,0, .2);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  margin-left: 9px;
+}
+
+table{
+  font-size: 10.24px;
+  margin-top: 30px;
+  box-shadow: 0px 0px 6px rgba(0,0,0, .2);
+  background: white;
+  border-radius: 4px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+table th{
+  border: 1px solid black;
+  padding: 5px;
+  
+}
+
+table td{
+  border: 1px solid black;
+  padding: 5x;
+  text-align: center;
+}
+
+.main--table input{
+  position: relative;
+  width: 30px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+
+
+
+#check{
+  position: absolute;
+  display: none;
+}
+
+#check:checked ~ .menu--side__side{
+  top: 0px;
+  z-index: 0;
+}
+
+
+   #check:checked ~ .mside{
+  position: absolute;
+  margin-left: 50px;
+  opacity: 1;
+  transition: all .5s;
+}
+
+
+
+
+
